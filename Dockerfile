@@ -11,7 +11,7 @@ ENV SONAR_VERSION=6.3.1 \
     SONARQUBE_JDBC_URL=
 
 # Http port
-EXPOSE 9000
+EXPOSE 8080
 
 RUN set -x \
 
