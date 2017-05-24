@@ -5,10 +5,7 @@ MAINTAINER David Gageot <david.gageot@sonarsource.com>
 ENV SONAR_VERSION=6.3.1 \
     SONARQUBE_HOME=/opt/sonarqube \
     # Database configuration
-    # ADDON POSTGRESQL CLEVER CLOUD
-    SONARQUBE_JDBC_USERNAME=$POSTGRESQL_ADDON_USER \
-    SONARQUBE_JDBC_PASSWORD=$POSTGRESQL_ADDON_PASSWORD \
-    SONARQUBE_JDBC_URL=jdbc:postgresql://$POSTGRESQL_ADDON_HOST:$POSTGRESQL_ADDON_PORT/$POSTGRESQL_ADDON_DB
+    # View sonar.properties file
 
 # Http port
 EXPOSE 8080
@@ -34,10 +31,9 @@ VOLUME "$SONARQUBE_HOME/data"
 
 WORKDIR $SONARQUBE_HOME
 
+COPY sonar.properties $SONARQUBE_HOME/conf
+
 CMD java -jar lib/sonar-application-$SONAR_VERSION.jar \
   -Dsonar.log.console=true \
-  -Dsonar.jdbc.username="$SONARQUBE_JDBC_USERNAME" \
-  -Dsonar.jdbc.password="$SONARQUBE_JDBC_PASSWORD" \
-  -Dsonar.jdbc.url="$SONARQUBE_JDBC_URL" \
   -Dsonar.web.javaAdditionalOpts="$SONARQUBE_WEB_JVM_OPTS -Djava.security.egd=file:/dev/./urandom" \
   -Dsonar.web.port=8080
