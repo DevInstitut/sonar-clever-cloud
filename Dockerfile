@@ -33,7 +33,7 @@ RUN set -x \
 VOLUME "$SONARQUBE_HOME/data"
 
 WORKDIR $SONARQUBE_HOME
-COPY run.sh $SONARQUBE_HOME/bin/
+
 CMD java -jar lib/sonar-application-$SONAR_VERSION.jar \
   -Dsonar.log.console=true \
   -Dsonar.jdbc.username="$SONARQUBE_JDBC_USERNAME" \
