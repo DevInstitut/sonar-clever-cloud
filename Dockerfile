@@ -3,7 +3,7 @@ FROM openjdk:8
 MAINTAINER David Gageot <david.gageot@sonarsource.com>
 
 ENV SONAR_VERSION=6.3.1 \
-    SONARQUBE_HOME=/opt/sonarqube \
+    SONARQUBE_HOME=/opt/sonarqube
     # Database configuration
     # View sonar.properties file
 
