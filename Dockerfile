@@ -5,10 +5,10 @@ MAINTAINER David Gageot <david.gageot@sonarsource.com>
 ENV SONAR_VERSION=6.3.1 \
     SONARQUBE_HOME=/opt/sonarqube \
     # Database configuration
-    # Defaults to using H2
-    SONARQUBE_JDBC_USERNAME=sonar \
-    SONARQUBE_JDBC_PASSWORD=sonar \
-    SONARQUBE_JDBC_URL=
+    # ADDON POSTGRESQL CLEVER CLOUD
+    SONARQUBE_JDBC_USERNAME=${env:POSTGRESQL_ADDON_USER} \
+    SONARQUBE_JDBC_PASSWORD=${env:POSTGRESQL_ADDON_PASSWORD} \
+    SONARQUBE_JDBC_URL=jdbc:postgresql://${env:POSTGRESQL_ADDON_HOST}:${env:POSTGRESQL_ADDON_PORT}/${env:POSTGRESQL_ADDON_DB}
 
 # Http port
 EXPOSE 8080
